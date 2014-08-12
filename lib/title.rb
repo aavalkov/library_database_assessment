@@ -20,6 +20,10 @@ class Title
 		result = DB.exec("INSERT INTO title (name) VALUES ('#{name}') RETURNING id;")
 		@id = result.first['id'].to_i
 	end
+
+	def add_author(author)
+		DB.exec("INSERT INTO books (title_id, author_id) VALUES (#{self.id}, #{author.id});")
+	end
 	
 	def ==(title_two)
 		self.name == title_two.name

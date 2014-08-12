@@ -29,4 +29,19 @@ describe 'title' do
   		expect(new_title).to eq new_title_two
   	end
   end
+
+  describe "add_author" do
+  	it "adds an author to a title" do
+  		new_title = Title.new({"name" => "Yertle the Turtle"})
+  		new_title.save
+  		new_author = Author.new({"name" => "Dr.Suess"})
+  		new_author.save
+  		new_author_two = Author.new({"name" => "Shel Silverstein"})
+  		new_author_two.save
+  		new_title.add_author(new_author)
+  		results = DB.exec("SELECT * FROM books WHERE title_id = #{new_title.id}")
+  		expect(results.first['author_id'].to_i).to eq new_author.id
+  	end
+  end
+
 end
