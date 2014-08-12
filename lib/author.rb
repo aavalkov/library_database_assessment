@@ -21,6 +21,16 @@ class Author
 		@id = result.first['id'].to_i
 	end
 
+	def view_titles_by_author
+    titles = []
+    results = DB.exec("SELECT title.* FROM author join books on (author.id = books.author_id) join title on (books.title_id = title.id) where author.id =#{self.id};")
+    results.each do |result|
+      new_title = Title.new(result)
+      titles << new_title
+    end
+    titles
+  end
+
 	def ==(author_two)
 		self.name == author_two.name
 	end
