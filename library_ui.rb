@@ -50,6 +50,14 @@ def add_title
 	puts "Title added!"
 end
 
+def view_titles
+	puts "All booke titles:"
+	Title.all.each_with_index do |title, index|
+		puts (index +1).to_s + ". " + title.name
+	end
+end
+
+
 main_menu
 			
 			
