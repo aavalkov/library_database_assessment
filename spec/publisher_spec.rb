@@ -7,4 +7,11 @@ describe 'Publisher' do
 			expect(new_publisher).to be_an_instance_of (Publisher)
 		end
 	end	
+
+	describe 'self.all' do
+    it 'pulls all publishers out of the DB and saves them as objects' do
+      expect(Publisher.all).to eq []
+    end
+  end
+  
 end
