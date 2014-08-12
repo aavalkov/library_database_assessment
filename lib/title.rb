@@ -1,5 +1,4 @@
 class Title
-	
 	attr_reader :name, :id
 
 	def initialize(title_info)

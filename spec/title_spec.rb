@@ -29,6 +29,4 @@ describe 'title' do
   		expect(new_title).to eq new_title_two
   	end
   end
-
-
 end
