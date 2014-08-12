@@ -1,5 +1,5 @@
 class Title
-	attr_reader :name, :id
+	attr_reader :name, :id, :publisher_id
 
 	def initialize(title_info)
 		@name = title_info['name']
@@ -20,6 +20,11 @@ class Title
 	def save
 		result = DB.exec("INSERT INTO title (name) VALUES ('#{name}') RETURNING id;")
 		@id = result.first['id'].to_i
+	end
+
+	def add_publisher(publisher)
+		DB.exec("UPDATE title SET publisher_id = #{publisher.id} WHERE id = #{self.id};")
+		@publisher_id = publisher.id
 	end
 
 	def add_author(author)

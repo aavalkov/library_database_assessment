@@ -30,6 +30,18 @@ describe 'title' do
   	end
   end
 
+  describe "add_publisher" do
+  	it "adds a publisher to a title" do
+  		new_title = Title.new({"name" => "Yertle the Turtle"})
+  		new_title.save
+  		new_publisher = Publisher.new({"name" => "Random House"})
+  		new_publisher.save
+  		new_title.add_publisher(new_publisher)
+  		expect(new_title.publisher_id).to eq new_publisher.id
+  	end
+  end
+
+
   describe "add_author" do
   	it "adds an author to a title" do
   		new_title = Title.new({"name" => "Yertle the Turtle"})

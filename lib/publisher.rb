@@ -5,6 +5,7 @@ class Publisher
 		@name = publisher_info["name"]
 		@id = publisher_info["id"].to_i	
 	end
+
 	def self.all
 		publishers = []
     results = DB.exec("SELECT * FROM publisher;")
@@ -17,7 +18,7 @@ class Publisher
 
   def save
 		result = DB.exec("INSERT INTO publisher (name) VALUES ('#{name}') RETURNING id;")
-		@id = result.first['id'].to_i
+		@id = result.first["id"].to_i
 	end
 
 	def ==(publisher_two)
