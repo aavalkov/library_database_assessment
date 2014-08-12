@@ -24,6 +24,16 @@ class Title
 	def add_author(author)
 		DB.exec("INSERT INTO books (title_id, author_id) VALUES (#{self.id}, #{author.id});")
 	end
+
+	def view_authors_by_title 
+    authors = []
+    results = DB.exec("SELECT author.* FROM title join books on (title.id = books.title_id) join author on (books.author_id = author.id) where title.id =#{self.id};")
+    results.each do |result|
+      new_author = Author.new(result)
+      authors << new_author
+    end
+    authors
+  end
 	
 	def ==(title_two)
 		self.name == title_two.name
