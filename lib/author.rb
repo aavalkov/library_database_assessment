@@ -3,7 +3,7 @@ class Author
 
 	def initialize(author_info)
 		@name = author_info["name"]
-		@id = author_info["id"].to_i
+		@id = author_info["id"].to_i	
 	end
 
 	def self.all
