@@ -4,6 +4,7 @@ class Title
 	def initialize(title_info)
 		@name = title_info['name']
 		@id = title_info['id'].to_i
+		@publisher_id = title_info['publisher_id'].to_i
 	end
 
 	def self.all
