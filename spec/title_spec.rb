@@ -41,6 +41,19 @@ describe 'title' do
   	end
   end
 
+  describe "show_publisher" do
+  	it "shows all of the titles under one publisher" do
+  		new_title = Title.new({"name" => "Yertle the Turtle"})
+  		new_title.save
+  		new_title_two = Title.new({"name" => "Wonder"})
+  		new_title_two.save
+  		new_publisher = Publisher.new({"name" => "Random House"})
+  		new_publisher.save
+  		new_title.add_publisher(new_publisher)
+  		new_title_two.add_publisher(new_publisher)
+  		expect(new_title.show_publisher(new_publisher)).to eq [new_title, new_title_two]
+  	end
+  end
 
   describe "add_author" do
   	it "adds an author to a title" do
