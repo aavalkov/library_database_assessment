@@ -72,6 +72,21 @@ def view_authors
 	end
 end
 
+def add_publisher
+	puts "Enter the name of the publisher:"
+	publisher = gets.chomp
+	new_publisher = Publisher.new("name" => publisher)
+	new_publisher.save
+	puts "Publisher added!"
+end
+
+def view_publishers
+	puts "All book publishers:"
+	Publisher.all.each_with_index do |publisher, index|
+		puts (index +1).to_s + ". " + publisher.name
+	end
+end
+
 main_menu
 			
 			
