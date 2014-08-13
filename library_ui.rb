@@ -65,6 +65,12 @@ def add_author
 	puts "Author added!"
 end
 
+def view_authors
+	puts "All authors:"
+	Author.all.each_with_index do |author, index|
+		puts (index +1).to_s + ". " + author.name
+	end
+end
 
 main_menu
 			
