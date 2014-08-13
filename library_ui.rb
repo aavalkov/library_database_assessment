@@ -36,7 +36,7 @@ def main_menu
 	elsif choice == 7
 		search
 		main_menu
-	elsif choice = 8
+	elsif choice == 8
 		puts "Bye!"
 		exit
 	end
@@ -51,10 +51,18 @@ def add_title
 end
 
 def view_titles
-	puts "All booke titles:"
+	puts "All book titles:"
 	Title.all.each_with_index do |title, index|
 		puts (index +1).to_s + ". " + title.name
 	end
+end
+
+def add_author
+	puts "Enter the name of the author"
+	name = gets.chomp
+	new_author = Author.new("name" => name)
+	new_author.save
+	puts "Author added!"
 end
 
 
