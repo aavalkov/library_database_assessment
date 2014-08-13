@@ -135,6 +135,17 @@ def search
 	end
 end
 
+def search_authors_for_titles
+	view_authors
+	puts "Enter the number of the author"
+	author_number = gets.chomp.to_i
+	new_author = Author.all[author_number -1]
+	results = new_author.view_titles_by_author 
+	results.each do |result|
+		puts result.name
+	end
+end
+
 def search_titles_for_authors
 	view_titles
 	puts "Enter the number of the title"
