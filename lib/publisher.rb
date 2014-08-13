@@ -21,6 +21,16 @@ class Publisher
 		@id = result.first["id"].to_i
 	end
 
+	def show_titles
+		results = DB.exec("SELECT * FROM title WHERE publisher_id = #{self.id}")
+		titles = []
+		results.each do |result|
+			new_title = Title.new(result)
+			titles << new_title
+		end
+		titles
+	end
+
 	def ==(publisher_two)
 		self.name == publisher_two.name
 	end

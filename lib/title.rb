@@ -26,18 +26,7 @@ class Title
 		DB.exec("UPDATE title SET publisher_id = #{publisher.id} WHERE id = #{self.id};")
 		@publisher_id = publisher.id
 	end
-
-	def show_publisher(name)
-		results = DB.exec("SELECT * FROM title WHERE publisher_id = #{name.id} ;")
-		titles = []
-		results.each do |result|
-			new_title = Title.new(result)
-			titles << new_title
-		end
-		titles
-	end
 		
-
 	def add_author(author)
 		DB.exec("INSERT INTO books (title_id, author_id) VALUES (#{self.id}, #{author.id});")
 	end

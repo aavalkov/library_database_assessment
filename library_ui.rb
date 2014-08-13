@@ -120,18 +120,26 @@ end
 
 def search
 	puts "Press 1 to search publishers for their book titles"
-	puts "Press 2 to search book titles for a publisher"
-	puts "Press 3 to search authors for all of their books"
-	puts "Press 4 to search books for their author or authors"
+	puts "Press 2 to search authors for all of their books"
+	puts "Press 3 to search books for their author or authors"
 	user_choice = gets.chomp.to_i
 	if user_choice == 1
 		search_publishers
 	elsif user_choice == 2
-		search_titles_for_publisher
-	elsif user_choice == 3
 		search_authors_for_titles
-	elsif user_choice == 4
+	elsif user_choice == 3
 		search_titles_for_authors
+	end
+end
+
+def search_publishers
+	view_publishers
+	puts "Enter the number of the publisher"
+	publisher_number = gets.chomp.to_i
+	new_publisher = Publisher.all[publisher_number - 1]
+	results = new_publisher.show_titles
+	results.each do |result|
+		puts result.name
 	end
 end
 
@@ -156,14 +164,6 @@ def search_titles_for_authors
 		puts result.name
 	end
 end
-
-# def search_publishers
-# 	view_publishers
-# 	puts "Enter the number of the publisher"
-# 	pubisher_number = gets.chomp.to_i
-# 	specific_publisher = Publisher.all[publisher_number - 1]
-# 	Title.show_publisher(specific_publisher)
-# end
 
 main_menu
 			
